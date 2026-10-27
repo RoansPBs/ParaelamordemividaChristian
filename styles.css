@@ -1,0 +1,252 @@
+
+:root {
+  --niebla: #efe9f7;     /* fondo */
+  --ciruela: #3b1a4a;    /* texto y títulos */
+  --frambuesa: #d63f6e;  /* acento */
+  --durazno: #ffc9b5;    /* detalles suaves */
+  --marfil: #fffdf9;     /* papel */
+  --titulos: "Fraunces", Georgia, serif;
+  --texto: "DM Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--niebla);
+  color: var(--ciruela);
+  font-family: var(--texto);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+h1, h2 { font-family: var(--titulos); font-weight: 700; line-height: 1.1; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1.5rem; }
+
+section, .hero, footer { padding: 4.5rem 1.5rem; }
+section > *, footer > * { max-width: 640px; margin-inline: auto; }
+
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--frambuesa); outline-offset: 3px; }
+
+.hero {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1100px;
+  margin-inline: auto;
+  animation: entrada 0.9s ease both;
+}
+
+.intro { font-style: italic; color: var(--frambuesa); margin-bottom: 0.8rem; }
+
+.hero h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); margin-bottom: 1.2rem; }
+
+.lead { max-width: 34ch; margin-bottom: 2rem; }
+
+.btn {
+  display: inline-block;
+  background: var(--frambuesa);
+  color: var(--marfil);
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn:hover { background: var(--ciruela); transform: translateY(-2px); }
+
+.polaroid {
+  background: var(--marfil);
+  padding: 0.9rem 0.9rem 1.2rem;
+  box-shadow: 0 18px 40px rgba(59, 26, 74, 0.2);
+  transform: rotate(3deg);
+  max-width: 340px;
+  justify-self: center;
+}
+.polaroid .foto { aspect-ratio: 4 / 5; }
+.polaroid figcaption {
+  font-family: var(--titulos);
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.foto {
+  background-color: var(--durazno);
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+}
+.foto-1 { background-image: url("img/foto-1.jpeg"); }
+.foto-2 { background-image: url("img/foto-2.jpeg"); }
+.foto-3 { background-image: url("img/foto-3.jpeg"); }
+.foto-4 { background-image: url("img/foto-4.jpeg"); }
+.foto-5 { background-image: url("img/foto-5.jpeg"); }
+
+.contador {
+  background: var(--ciruela);
+  color: var(--marfil);
+  text-align: center;
+}
+.numero {
+  font-family: var(--titulos);
+  font-size: clamp(4rem, 14vw, 8rem);
+  line-height: 1;
+  color: var(--durazno);
+}
+.etiqueta { margin-top: 0.6rem; }
+
+.linea {
+  list-style: none;
+  border-left: 3px solid var(--frambuesa);
+  padding-left: 1.6rem;
+}
+.linea li { position: relative; margin-bottom: 2.2rem; }
+.linea li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.6rem - 9px);
+  top: 0.45rem;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--frambuesa);
+  border: 3px solid var(--niebla);
+}
+.linea time { font-family: var(--titulos); font-weight: 700; font-size: 1.15rem; }
+
+.razones { background: var(--marfil); }
+.razones ul { list-style: none; }
+.razones li {
+  font-family: var(--titulos);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  padding: 1rem 0 1rem 2.2rem;
+  border-bottom: 1px solid var(--durazno);
+  position: relative;
+}
+.razones li::before {
+  content: "\2665";
+  position: absolute;
+  left: 0;
+  color: var(--frambuesa);
+}
+
+.galeria > .grid { max-width: 900px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.grid .foto { aspect-ratio: 1; }
+.foto-2 { grid-column: span 2; aspect-ratio: 2 / 1 !important; }
+.foto-5 {
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carta article {
+  background: var(--marfil);
+  padding: 2.2rem;
+  border-left: 6px solid var(--frambuesa);
+  box-shadow: 0 10px 30px rgba(59, 26, 74, 0.12);
+}
+.carta p { margin-bottom: 1.1rem; }
+.firma { font-family: var(--titulos); font-style: italic; font-size: 1.2rem; margin-bottom: 0; }
+
+footer { text-align: center; font-size: 0.95rem; }
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero { animation: none; }
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; gap: 2.5rem; }
+  .polaroid { transform: rotate(2deg); max-width: 280px; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .foto-2, .foto-5 { grid-column: span 2; }
+}
+
+/* Estilos para la sección de canciones */
+#canciones-dedicadas {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+#canciones-dedicadas h2 {
+    color: #ff4d6d; /* Un tono rosa/rojo muy lindo */
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#canciones-dedicadas .descripcion {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de las tarjetas */
+.lista-canciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Diseño de cada tarjeta de canción */
+.tarjeta-cancion {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ffe3e8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+/* Efecto al pasar el mouse por encima */
+.tarjeta-cancion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.15);
+}
+
+.tarjeta-cancion h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.tarjeta-cancion .artista {
+    margin: 0 0 15px 0;
+    color: #ff4d6d;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tarjeta-cancion .dedicatoria {
+    margin: 0;
+    color: #555;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 3px solid #ffccd5;
+    padding-left: 12px;
+}
+
+.reproductor-spotify {
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
